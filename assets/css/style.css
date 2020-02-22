@@ -1,0 +1,12 @@
+.container {
+    margin-top: 30px;
+}
+.jumbotron {
+    border-radius: 10px;
+    background-color: #ffffff;
+    color: grey;
+}
+body {
+    font-family: 'Russo One', sans-serif;
+    background-image: url(blue-snow.png);
+}
