@@ -19,11 +19,12 @@ var directions = document.getElementById("directions");
 //the variable to hold the choices that the computer can choose from
 var computerChoices = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y"];
 
+//function to reset the guesses so far counter when a win or a lose occurs.
 function reset() {
     guessesLeftSoFar = 9;
 }
 
-//my function for the event
+//my function for the event when the user presses a key
 document.onkeyup = function(event) {
 
     guessesArray.push(userGuess);
@@ -43,6 +44,8 @@ document.onkeyup = function(event) {
         reset();
     }
 
+
+    //these manipulate the html elements and adds all the information on to the page.
     directions.textContent = "";
 
     userChoice.textContent = "You chose: " + userGuess;
