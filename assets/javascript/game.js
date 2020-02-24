@@ -1,17 +1,17 @@
 
 
 
-//variables for wins, losses, guesses so far, and guesses so far
+//variables for wins, losses, guesses left so far, and guesses array
 var wins = 0;
 var losses = 0;
 var guessesLeftSoFar = 9;
-var guessesArray = [];
+
 
 //variables for elements inside index
 var winsText = document.getElementById("wins-text");
 var lossesText = document.getElementById("losses-text");
 var guessesLeft = document.getElementById("guesses-left");
-var guessesSoFar = document.getElementById("guesses-sofar");
+var guessesSoFar = document.getElementById("guesses-sofar")
 var userChoice = document.getElementById("user-choice");
 var directions = document.getElementById("directions");
 
@@ -24,18 +24,21 @@ function reset() {
     guessesLeftSoFar = 9;
 }
 
+
+
 //my function for the event when the user presses a key
 document.onkeyup = function(event) {
-
-    guessesArray.push(userGuess);
     
     var userGuess = event.key.toLowerCase();
 
     var computerGuess = computerChoices[Math.floor(Math.random() * computerChoices.length)];
 
+    var guessesArray = [];
+    guessesArray.push(userGuess);
+
     if (userGuess === computerGuess) {
         wins++;
-        alert("You Guessed Right!!");
+        alert(userGuess.toUpperCase() + " is correct!.");
         reset();
     } else if (userGuess !== computerGuess) {
         guessesLeftSoFar--;
@@ -48,7 +51,7 @@ document.onkeyup = function(event) {
     //these manipulate the html elements and adds all the information on to the page.
     directions.textContent = "";
 
-    userChoice.textContent = "You chose: " + userGuess;
+    userChoice.textContent = "You chose: " + userGuess.toUpperCase();
     guessesLeft.textContent = "Guesses left: " + guessesLeftSoFar;
     guessesSoFar.textContent = "Guesses so far: " + guessesArray;
     winsText.textContent = "Wins: " + wins;
