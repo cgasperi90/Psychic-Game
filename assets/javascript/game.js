@@ -5,7 +5,7 @@
 var wins = 0;
 var losses = 0;
 var guessesLeftSoFar = 9;
-
+var guessesArray = [];
 
 //variables for elements inside index
 var winsText = document.getElementById("wins-text");
@@ -22,6 +22,7 @@ var computerChoices = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l
 //function to reset the guesses so far counter when a win or a lose occurs.
 function reset() {
     guessesLeftSoFar = 9;
+    guessesArray = [];
 }
 
 
@@ -33,15 +34,15 @@ document.onkeyup = function(event) {
 
     var computerGuess = computerChoices[Math.floor(Math.random() * computerChoices.length)];
 
-    var guessesArray = [];
-    guessesArray.push(userGuess);
-
+    
     if (userGuess === computerGuess) {
         wins++;
         alert(userGuess.toUpperCase() + " is correct!.");
         reset();
     } else if (userGuess !== computerGuess) {
         guessesLeftSoFar--;
+        guessesArray.push(userGuess);
+        document.querySelector("#guesses-sofar").innerHTML = guessesArray;
     } if (guessesLeftSoFar === 0) {
         losses++;
         reset();
